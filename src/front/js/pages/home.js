@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Header from "../component/header.jsx";
-import ShowMainContent from "../Component/Post Comp/mainContent.jsx";
-import homeBg from "../../img/home-bg.jpg";
+import ShowMainContent from "../component/Post Comp/homeComp.jsx";
+import homeBg from "../../img/home-bg1.jpg";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -13,7 +13,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Header imgUrl={homeBg}/>
-		<ShowMainContent/>
+			<ShowMainContent/>
 		</div>
 		
 	);

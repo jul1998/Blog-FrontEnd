@@ -12,17 +12,16 @@ export const Navbar = () => {
 			const currentTop = document.body.getBoundingClientRect().top * -1;
 			if ( currentTop < scrollPos) {
 				// Scrolling Up
-				if (currentTop > 0 && mainNav.classNameList.contains('is-fixed')) {
-					mainNav.classNameList.add('is-visible');
+				if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
+					mainNav.classList.add('is-visible');
 				} else {
-					console.log(123);
-					mainNav.classNameList.remove('is-visible', 'is-fixed');
+					mainNav.classList.remove('is-visible', 'is-fixed');
 				}
 			} else {
 				// Scrolling Down
-				mainNav.classNameList.remove(['is-visible']);
-				if (currentTop > headerHeight && !mainNav.classNameList.contains('is-fixed')) {
-					mainNav.classNameList.add('is-fixed');
+				mainNav.classList.remove(['is-visible']);
+				if (currentTop > headerHeight && !mainNav.classList.contains('is-fixed')) {
+					mainNav.classList.add('is-fixed');
 				}
 			}
 			scrollPos = currentTop;

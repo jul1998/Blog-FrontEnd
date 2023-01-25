@@ -17,14 +17,13 @@ function ShowMainContent(){
           }
           fetch();
     },[])
-    console.log(postsData)
 
     function displayAllPosts(){
         return(postsData.map((post, index)=>{
             return(
                 <div>
                 <div className="post-preview">
-                    <Link to="post.html">
+                    <Link to={`/posts/${post.id}`}>
                         <h2 className="post-title">{post.title}</h2>
                         <h3 className="post-subtitle">{post.subtitle}</h3> 
                     </Link>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import Posts from "../component/Post Comp/postsComp.jsx";
+import { Context } from "../../store/appContext";
+import Posts from "../../component/Post Comp/postsComp.jsx";
 import { Link, useParams } from "react-router-dom";
 
 function DisplayPosts(){

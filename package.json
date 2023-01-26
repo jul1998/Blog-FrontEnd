@@ -73,9 +73,12 @@
 		]
 	},
 	"dependencies": {
+		"dompurify": "^2.4.3",
+		"draft-convert": "^2.1.13",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
+		"react-draft-wysiwyg": "^1.15.0",
 		"react-icons": "^4.7.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",

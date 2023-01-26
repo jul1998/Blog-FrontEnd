@@ -7,6 +7,7 @@ import { Single } from "./pages/single";
 import {Signup} from "./pages/signup.jsx"; //Component to register user
 import injectContext from "./store/appContext";
 import DisplayPosts from "./pages/posts.jsx";
+import SignupForm from "./pages/User Pages/signupPage.jsx";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -25,8 +26,8 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<Signup />} path="/signup" />
                         <Route element={<DisplayPosts />} path="/posts/:postid" />
+                        <Route element={<SignupForm />} path="/signup" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

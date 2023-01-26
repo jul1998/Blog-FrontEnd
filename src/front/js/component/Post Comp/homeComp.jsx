@@ -13,7 +13,6 @@ function ShowMainContent(){
             let response = await actions.genericFetch("show_posts")
             let jsonResponse = await response.json()
             setPostsData(jsonResponse);
-            console.log(postsData)
           }
           fetch();
     },[])
@@ -21,7 +20,7 @@ function ShowMainContent(){
     function displayAllPosts(){
         return(postsData.map((post, index)=>{
             return(
-                <div>
+                <div  key={index}>
                 <div className="post-preview">
                     <Link to={`/posts/${post.id}`}>
                         <h2 className="post-title">{post.title}</h2>

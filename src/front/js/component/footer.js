@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export function Footer() {
 		return (
-		  <footer className="bg-dark text-light py-4">
+		  <footer style={{marginTop:"250px"}} className="bg-dark text-light py-5">
 			<div className="container">
 			  <div className="row">
 				<div className="col-md-4">

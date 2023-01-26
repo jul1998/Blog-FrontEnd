@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import Header from "../../component/header.jsx";
+import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,6 +24,9 @@ function SignupForm(){
   }
   )
 
+  const [error, setError] = useState('');
+
+
 
   function handleChange(event) {
     console.log("handle func")
@@ -37,6 +41,44 @@ function SignupForm(){
   }
 
   console.log(formData)
+
+  async function handleSubmit(event){
+    event.preventDefault();
+    if (formData.password !== formData.confirmPassword || formData.password.length< 4) {
+      setError('Passwords do not match or is less than 4 characters.');
+    } else {
+      setError('');
+      // Perform the signup logic here
+      const { fullname, password, email } = formData
+
+      let bodyObj = {
+        email:email,
+        name:fullname,
+        password:password
+      }
+
+      let response = await actions.genericFetch("signup", "POST", bodyObj)
+      let jsonResponse = await response.json() // Get msg from backend endpoint
+      console.log(jsonResponse)
+
+      if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Great!',
+          text: `${jsonResponse.message}`,
+        })
+        return navigate("/login")
+  
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `${jsonResponse.message}`,
+        })
+      }
+    }
+  }
+
 
 
     return(
@@ -53,12 +95,12 @@ function SignupForm(){
 
                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                <form className="mx-1 mx-md-4">
+                <form onSubmit={handleSubmit} className="mx-1 mx-md-4">
 
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" />
+                      <input required onChange={handleChange} name="fullname" type="text" id="form3Example1c" className="form-control" />
                       <label className="form-label" htmlFor="form3Example1c">Your Name</label>
                     </div>
                   </div>
@@ -66,7 +108,7 @@ function SignupForm(){
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" className="form-control" />
+                      <input required onChange={handleChange} name="email" type="email" id="form3Example3c" className="form-control" />
                       <label className="form-label" htmlFor="form3Example3c">Your Email</label>
                     </div>
                   </div>
@@ -74,7 +116,7 @@ function SignupForm(){
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" className="form-control" />
+                      <input required onChange={handleChange} name="password" type="password" id="form3Example4c" className="form-control" />
                       <label className="form-label" htmlFor="form3Example4c">Password</label>
                     </div>
                   </div>
@@ -82,20 +124,22 @@ function SignupForm(){
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" className="form-control" />
+                      <input required onChange={handleChange} name="confirmPassword" type="password" id="form3Example4cd" className="form-control" />
                       <label className="form-label" htmlFor="form3Example4cd">Repeat your password</label>
+                      
                     </div>
+                    
                   </div>
-
+                  {error && <p style={{color:"red"}}>{error}</p>}
                   <div className="form-check d-flex justify-content-center mb-5">
-                    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <input onChange={handleChange} name="newsLetter" className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                     <label className="form-check-label" htmlFor="form2Example3">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
                   </div>
 
                   <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" className="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" className="btn btn-primary btn-lg">Register</button>
                   </div>
 
                 </form>

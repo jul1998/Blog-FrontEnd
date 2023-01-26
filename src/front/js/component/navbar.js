@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
+import LogoutFunction from "./User Comp/logoutComp.jsx";
 
 export const Navbar = () => {
 
+	let token = localStorage.getItem("token")
+	console.log(token)
 	window.addEventListener('DOMContentLoaded', () => {
 		let scrollPos = 0;
 		const mainNav = document.getElementById('mainNav');
@@ -29,7 +32,7 @@ export const Navbar = () => {
 		
 	})
 	return (
-		<nav className="navbar navbar-expand-lg navbar-dark" id="mainNav">
+		<nav className="navbar navbar-expand-lg navbar-light" id="mainNav">
 		<div className="container px-4 px-lg-5">
 			<Link className="navbar-brand" to="/">My Blog</Link>
 			<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +45,15 @@ export const Navbar = () => {
 					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
 					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
 					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
-					<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/signup">Sign Up</Link></li>
-					<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/login">Login</Link></li>
+					{!token?(
+						<> 
+						<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/signup">Sign Up</Link></li>
+						<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/login">Login</Link></li>
+						</>
+					):
+					<li className="nav-item"><LogoutFunction/></li>
+				}
+					
 				</ul>
 			</div>
 		</div>

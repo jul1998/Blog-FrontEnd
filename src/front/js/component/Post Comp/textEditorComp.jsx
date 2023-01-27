@@ -8,13 +8,16 @@ import DOMPurify from 'dompurify';
 import Swal from 'sweetalert2'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../../styles/textEditor.css"
+import jwtDecode from 'jwt-decode'
+
 
 export default function TextEditor(){
 
     const { store, actions } = useContext(Context);
     const [error, setError] = useState('');
     const navigate = useNavigate()
-
+    
+    let isExpired = actions.checkIfTokenExpired()
 
     const [postData, setPostData] = useState({
         title:"",
@@ -99,6 +102,9 @@ async function handleSubmit(event){
 
     return(
         <div className="container">
+            {isExpired?<div class="alert alert-danger" role="alert">
+                Token is expired. <Link to="/login" class="alert-link">Login again</Link>. Give it a click if you like.
+            </div>:null}
             <div className="main-textEditor">
 
             <div className="form-floating mb-3">

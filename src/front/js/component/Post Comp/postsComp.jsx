@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import Header from "../header.jsx";
 import postbg from "../../../img/post-bg.jpg";
 import { Link } from "react-router-dom";
+import DeletePostBtn from "./deletePostComp.jsx";
 
 
 function Posts({postId}){
@@ -17,32 +18,31 @@ function Posts({postId}){
             let response = await actions.genericFetchProtected(`post/${postId}`)
             let jsonResponse = await response.json()
             setContent(jsonResponse);
-            console.log(content)
           }
           fetch();
     },[])
     
-    console.log(content)
+
 
     function checkIfuserCreatedPost(){
         console.log(typeof userId, typeof content.author_id)
         if (content.author_id == userId){
-            console.log(true)
+           
             return(
                 <>
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
+                    <ul className="nav justify-content-center">
+                        <li className="nav-item">
                             <button className="btn btn-info">Edit Post</button>
                         </li>
-                        <li class="nav-item">
-                            <button className="btn btn-danger">Delete</button>
+                        <li className="nav-item">
+                            <DeletePostBtn postId={postId}/>
                         </li>
 
                     </ul>
                 </>
             )
         }else{
-            console.log(false)
+            
             return null
         }
     }
@@ -57,7 +57,7 @@ function Posts({postId}){
                 <div className="row gx-4 gx-lg-5 justify-content-center">
                 {checkIfuserCreatedPost()}
                     <div className="col-md-10 col-lg-8 col-xl-7">
-                        <div dangerouslySetInnerHTML={{__html: content.content}} />
+                        {content.content?<div dangerouslySetInnerHTML={{__html: content.content}} />:<h1>This post was deleted or you need to login again</h1>}
                         
                         
                     </div>

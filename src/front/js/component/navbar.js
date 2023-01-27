@@ -42,19 +42,18 @@ export const Navbar = () => {
 			<div className="collapse navbar-collapse" id="navbarResponsive">
 				<ul className="navbar-nav ms-auto py-4 py-lg-0">
 					<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</Link></li>
-					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+					{/*<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>*/}
 					<li className="nav-item dropdown">
 				<a className="nav-link dropdown-toggle mt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Post Actions
 				</a>
 				<ul className="dropdown-menu">
 					<li><Link className="dropdown-item" to="/createPost">Create Post</Link></li>
-					<li><a className="dropdown-item" href="#">Another action</a></li>
 					<li><hr className="dropdown-divider"/></li>
 					<li><a className="dropdown-item" href="#">Something else here</a></li>
 				</ul>
 				</li>
-					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+					<li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">About</a></li>
 					{!token?(
 						<> 
 						<li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/signup">Sign Up</Link></li>

@@ -1,17 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import Header from "../header.jsx";
-import postbg from "../../../img/post-bg.jpg";
 import { Link } from "react-router-dom";
 import DeletePostBtn from "./deletePostComp.jsx";
-import EditPostBtn from "./editPostComp.jsx";
+
 
 function Posts({postId}){
     const { store, actions } = useContext(Context);
     const [content, setContent] = useState([])
     let token = localStorage.getItem("token")
     let userId = localStorage.getItem("user_id")
-    let isExpired = actions.checkIfTokenExpired()
 
 
     useEffect(()=>{
@@ -56,7 +54,7 @@ function Posts({postId}){
                 <div className="row gx-4 gx-lg-5 justify-content-center">
                 {checkIfuserCreatedPost()}
                     <div className="col-md-10 col-lg-8 col-xl-7">
-                        {content.content || !isExpired?<div dangerouslySetInnerHTML={{__html: content.content}} />:<h1>This post was deleted or you need to login again</h1>}
+                        {content.content?<div dangerouslySetInnerHTML={{__html: content.content}} />:<h1>This post was deleted or you need to login again</h1>}
                         
                         
                     </div>

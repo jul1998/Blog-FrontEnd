@@ -1,4 +1,4 @@
-
+import jwtDecode from 'jwt-decode'
 export const userStore = {
     user: {
         "isLogOut": "false"
@@ -60,6 +60,12 @@ export function userActions(getStore, getActions, setStore) {
             setStore({ ...store, carritoCompras: responseJson })
             console.log(responseJson)
             return responseJson
+        },
+        checkIfTokenExpired: ()=>{
+            const token = localStorage.getItem('token')
+            const decoded = jwtDecode(token)
+            const isExpired = decoded.exp < Date.now() / 1000
+            return isExpired
         }
     }
 }

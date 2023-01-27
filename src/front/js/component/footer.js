@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGitlab, FaGithub } from 'react-icons/fa';
 
 
 
@@ -14,12 +14,12 @@ export function Footer() {
 					<a href="#" className="text-light mr-3">
 					<FaFacebook size={30} />
 					</a>
-					<a href="#" className="text-light mr-3">
-					<FaTwitter size={30} />
+					<a href="https://www.linkedin.com/in/juli%C3%A1n-guevara/" className="text-light mr-3">
+					<FaLinkedin size={30} />
 
 					</a>
-					<a href="#" className="text-light mr-3">
-					<FaInstagram size={30} />
+					<a href="https://github.com/jul1998" className="text-light mr-3">
+					<FaGithub size={30} />
 					</a>
 				  </div>
 				</div>

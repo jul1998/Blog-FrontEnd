@@ -4,17 +4,20 @@ import Posts from "../../component/Post Comp/postsComp.jsx";
 import { Link, useParams } from "react-router-dom";
 import Header from "../../component/header.jsx";
 import TextEditor from "../../component/Post Comp/textEditorComp.jsx";
+import EditPostBtn from "../../component/Post Comp/editPostComp.jsx";
 
-export default function CreatePost(){
+export default function EditPost(){
 
-    
-
-    let img = "https://images.unsplash.com/photo-1461344577544-4e5dc9487184?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    let img = "https://cdn.pixabay.com/photo/2016/09/15/18/35/update-1672385__480.jpg"
 
     return(
         <>
-        <Header imgUrl={img} title={"Create a post"} subtitle={"Here you can create your own post!"}/>
+        <Header imgUrl={img} title={"Edit post"} subtitle={"Here you can edit a post!"}/>
+        <div className="textEditor-body">
         <TextEditor/>
+        
+        </div>
+
         </>
     )
 }

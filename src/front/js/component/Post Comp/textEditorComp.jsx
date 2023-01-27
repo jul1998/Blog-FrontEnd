@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation  } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import { convertToHTML } from 'draft-convert';
 import DOMPurify from 'dompurify';
 import Swal from 'sweetalert2'
+import EditPostBtn from "../../component/Post Comp/editPostComp.jsx";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../../styles/textEditor.css"
-import jwtDecode from 'jwt-decode'
 
 
 export default function TextEditor(){
@@ -16,8 +16,8 @@ export default function TextEditor(){
     const { store, actions } = useContext(Context);
     const [error, setError] = useState('');
     const navigate = useNavigate()
-    
     let isExpired = actions.checkIfTokenExpired()
+    const location = useLocation(); //Check current location e.g, /createPost
 
     const [postData, setPostData] = useState({
         title:"",
@@ -25,6 +25,7 @@ export default function TextEditor(){
         image: ""
     }
     )
+
     const [editorState, setEditorState] = useState(
         () => EditorState.createEmpty(),
       )
@@ -61,7 +62,6 @@ function handleChange(event){
 async function handleSubmit(event){
     event.preventDefault();
     const {title, subtitle, image} = postData
-    
     if(!title || !subtitle || !convertedContent ){
         setError('Title, content or subtitle is missing')
     }else{
@@ -131,7 +131,9 @@ async function handleSubmit(event){
                 editorClassName="editor-class"
                 toolbarClassName="toolbar-class"
             />
-            <button onClick={handleSubmit} type="button" className="btn btn-primary my-2">Submit</button>
+            {location.pathname === "/createPost"?
+            <button onClick={handleSubmit} type="button" className="btn btn-primary my-2">Submit</button>:
+            <EditPostBtn title={postData.title} subtitle={postData.subtitle} content={createMarkup(convertedContent).__html} post_img={postData.image}/>}
             </div>
            
             </div>

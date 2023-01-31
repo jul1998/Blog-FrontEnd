@@ -3,7 +3,7 @@ import { Context } from "../../store/appContext";
 import Header from "../header.jsx";
 import { Link } from "react-router-dom";
 import DeletePostBtn from "./deletePostComp.jsx";
-
+import Comments from "./commentsComp.jsx";
 
 function Posts({postId}){
     const { store, actions } = useContext(Context);
@@ -55,14 +55,14 @@ function Posts({postId}){
                 {checkIfuserCreatedPost()}
                     <div className="col-md-10 col-lg-8 col-xl-7">
                         {content.content?<div dangerouslySetInnerHTML={{__html: content.content}} />:<h1>This post was deleted or you need to login again</h1>}
-                        
-                        
                     </div>
+                   
                 </div>
             </div>
         </article>: <div class="position-absolute top-100 start-50 translate-middle mt-5">
             <button className="btn btn-info"><Link to="/login">You need to login to see this content</Link></button>
             </div>}
+           
         </div>
     )
 }

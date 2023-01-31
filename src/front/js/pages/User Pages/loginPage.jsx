@@ -76,78 +76,78 @@ function Login(){
   return(
         <>
         <Header imgUrl={img} title={"Login"} subtitle={"Please, fill this form to login"}/>
-            <div class="container text-center">
-  <div class="row">
-    <div class="col">
+            <div className="container text-center">
+  <div className="row">
+    <div className="col">
      
     </div>
-    <div class="col-6">
+    <div className="col-6">
     <form onSubmit={login}>
  
-  <div class="form-outline mb-4">
-    <input required onChange={handleChange} name="email" type="email" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
+  <div className="form-outline mb-4">
+    <input required onChange={handleChange} name="email" type="email" id="form2Example1" className="form-control" />
+    <label className="form-label" htmlFor="form2Example1">Email address</label>
   </div>
 
 
-  <div class="form-outline mb-4">
-    <input required onChange={handleChange} name="password" type="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
+  <div className="form-outline mb-4">
+    <input required onChange={handleChange} name="password" type="password" id="form2Example2" className="form-control" />
+    <label className="form-label" htmlFor="form2Example2">Password</label>
   </div>
 
 
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
+  <div className="row mb-4">
+    <div className="col d-flex justify-content-center">
     
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example34" />
-        <label class="form-check-label" for="form2Example34"> Remember me </label>
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" value="" id="form2Example34" />
+        <label className="form-check-label" htmlFor="form2Example34"> Remember me </label>
       </div>
     </div>
 
-    <div class="col">
+    <div className="col">
   
       <a href="#!">Forgot password?</a>
     </div>
   </div>
 
 
-  <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+  <button type="submit" className="btn btn-primary btn-block mb-4">Login</button>
 
 
-  <div class="text-center">
+  <div className="text-center">
     <p>Not a member? <Link to="/signup">Register</Link></p>
     <p>or sign up with:</p>
-    <button type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-facebook-f"></i>
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-facebook-f"></i>
     </button>
 
-    <button type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-google"></i>
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-google"></i>
     </button>
 
-    <button type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-twitter"></i>
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-twitter"></i>
     </button>
 
-    <button type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-github"></i>
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-github"></i>
     </button>
   </div>
 </form>
     </div>
-    <div class="col">
+    <div className="col">
      
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div className="row">
+    <div className="col">
       
     </div>
-    <div class="col-5">
+    <div className="col-5">
       
     </div>
-    <div class="col">
+    <div className="col">
       
     </div>
   </div>

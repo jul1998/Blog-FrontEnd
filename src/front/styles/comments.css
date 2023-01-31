@@ -1,0 +1,18 @@
+.comments-section{
+    overflow: auto;
+    max-height: 500px;
+    margin-top: 20px;
+    width: 80%;
+    background-color: rgb(221, 219, 217);
+}
+
+.comment-read-more-btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(221, 219, 217);
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -73,11 +73,13 @@
 		]
 	},
 	"dependencies": {
+		"bootstrap": "^5.2.3",
 		"dompurify": "^2.4.3",
 		"draft-convert": "^2.1.13",
 		"jwt-decode": "^3.1.2",
-		"prop-types": "^15.6.1",
+		"prop-types": "^15.8.1",
 		"react": "^16.8.4",
+		"react-bootstrap": "^2.7.0",
 		"react-dom": "^16.8.4",
 		"react-draft-wysiwyg": "^1.15.0",
 		"react-icons": "^4.7.1",

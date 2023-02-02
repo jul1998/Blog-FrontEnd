@@ -3,6 +3,9 @@ import { Context } from "../../store/appContext";
 import "../../../styles/comments.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import Spinner from 'react-bootstrap/Spinner';
+import DeleteComment from "./Comment Comp/deleteCommentComp.jsx";
+import CommentTextArea from "./Comment Comp/addComment.jsx";
 
 
 export default function Comments({postId}){
@@ -25,10 +28,7 @@ export default function Comments({postId}){
     },[])
 
 
-        
-    
-
-    console.log(comments)
+    const sortedComments = comments.length > 0 ? comments.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) : null;
 
     function showComments(){
         if (isTokenExpired){
@@ -42,14 +42,14 @@ export default function Comments({postId}){
                     return navigate("/login")
                 }})
         }else{
-            if(Array.isArray(comments)){
-                return (comments.map((comment, index)=>{
+            if(Array.isArray(sortedComments)){
+                return (sortedComments.map((comment, index)=>{
                     return(
-                    <div>
+                    <div key={index}>
                         <div className="d-flex flex-column mb-3">
     
                         <div className="d-flex justify-content-center">
-                            {comment.comment_author.id == userId?<i onClick={()=>alert("Delete")} className="fa-regular fa-x"></i>:null}                    
+                            {comment.comment_author.id == userId?<DeleteComment comment_id={comment.id}/>:null}                    
                         </div>
                         <div className="p-2">Posted by <strong>{comment.comment_author.name}</strong>  <small> at {comment.created_at}</small></div>
                         <div className="p-2">{isExpanded ?comment.comment:comment.comment.slice(0, 100)}
@@ -58,27 +58,25 @@ export default function Comments({postId}){
                       className="comment-read-more-btn">
                         {isExpanded ? 'Show less' : '... Read more'}
                       </button>}</div>
-
                       <div style={{ borderBottom: "1px solid black" }} />
                       </div>
+                      
+                      
                     </div>
+                        
                     
                     )
                 }))
                 
             }else{
                 return <div className="d-flex justify-content-center">
-                <div className="spinner-border text-primary" role="status">
+                <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
-                </div>
+                </Spinner>
             </div>
             }
             }
-
-    //Continue with the delete comment function
     
-     
-
     }
 
     return(
@@ -87,8 +85,11 @@ export default function Comments({postId}){
             <h1>Comments</h1>
             <div className="comments-section">
             {showComments()}
+        
             </div>
-           
+            <div>
+                <CommentTextArea/>
+            </div>
         </div>
         
 

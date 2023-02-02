@@ -16,3 +16,14 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.comment-text-area{
+    width: 80%;
+    height: 100px;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}

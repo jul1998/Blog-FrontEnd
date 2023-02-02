@@ -63,6 +63,7 @@ export function userActions(getStore, getActions, setStore) {
         },
         checkIfTokenExpired: ()=>{
             const token = localStorage.getItem('token')
+            if (!token) return true
             const decoded = jwtDecode(token)
             const isExpired = decoded.exp < Date.now() / 1000
             return isExpired

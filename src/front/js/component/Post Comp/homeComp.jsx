@@ -17,7 +17,6 @@ function ShowMainContent(){
           fetch();
     },[])
 
-    console.log(postsData)
 
     function displayAllPosts(){
         return(postsData.map((post, index)=>{

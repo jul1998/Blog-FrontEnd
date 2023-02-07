@@ -3,16 +3,13 @@ import { Context } from "../../store/appContext";
 import Header from "../../component/header.jsx";
 import Swal from 'sweetalert2'
 import { useNavigate, Link } from "react-router-dom";
+import LoginGitHub from "./loginOptions/loginGitHub.jsx";
 
 function Login(){
     const { store, actions } = useContext(Context);
     const navigate = useNavigate()
     let img = "https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
   
-  
-    //let response = actions.login()
-    //let res1 = store.user
-    //console.log(res1)
   
     const [formData, setFormData] = useState({
       password:"",
@@ -131,7 +128,7 @@ function Login(){
     </button>
 
     <button type="button" className="btn btn-secondary btn-floating mx-1">
-      <i className="fab fa-github"></i>
+      <LoginGitHub/>
     </button>
   </div>
 </form>

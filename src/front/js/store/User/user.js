@@ -43,6 +43,21 @@ export function userActions(getStore, getActions, setStore) {
 
             return response
         },
+
+        loginWithGitHub: async (endpoint, method = "GET", data = undefined) => {
+            let response = await fetch(BACKEND_URL + endpoint, {
+                method: method,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            let responseJson = await response.json()
+            if (response.ok){
+                localStorage.setItem("gitHub", responseJson.token)
+            }
+            
+            return { response, responseJson }
+        },
+
         logoutFetch: async () => {
             const store = getStore()
             let response = await getActions().genericFetchProtected("logout")

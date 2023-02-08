@@ -11,16 +11,40 @@ export default function LoginGitHub(){
 
     const CLIENT_ID = "e705e438ff461162c04b"
 
-    useEffect(() => {
-        const code = new URLSearchParams(window.location.search).get("code")
-        console.log(code)
 
-            
-    }, [])
+	useEffect(() => {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const code = urlParams.get("code");
+		console.log(code)
+        if(code){
+           async function getAccessToken(){
+            let response = await actions.loginWithGitHub("github-auth?code=" + code, "GET")
+            let jsonRes = await response.responseJson 
+            if (response.response.ok){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: `${jsonRes.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate("/")
+            }
+           }
+            getAccessToken()
+        }
+        
+	},[])
 
-    function loginWithGitHub(code){
-        window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID)
-    }
+    function loginWithGitHub() {
+        window.location.assign(
+          "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
+        );
+
+        
+       
+      }
 
 
     return(

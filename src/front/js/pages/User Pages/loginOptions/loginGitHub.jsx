@@ -9,7 +9,7 @@ export default function LoginGitHub(){
     const { store, actions } = useContext(Context);
     const navigate = useNavigate()
 
-    const CLIENT_ID = "e705e438ff461162c04b"
+    const CLIENT_ID = process.env.CLIENT_ID
 
 
 	useEffect(() => {
